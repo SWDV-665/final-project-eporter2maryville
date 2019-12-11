@@ -1,9 +1,52 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      About Us
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content></ion-content>
+    <ion-toolbar>
+      <ion-title>
+        Caffeine Info
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card class="info-banner">
+      <img src="/assets/Caffeine_structure.svg" alt="caffeine-molecule" height="100" />
+      <ion-card-header>
+        <ion-card-subtitle>Caffeine</ion-card-subtitle>
+        <ion-card-title class="info-card-title" >What is it?</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Caffeine is the world's most widely used stimulant. It's used for everything from
+          help staying awake, a little oomph in a workout, to treating conditions like migraine
+          or depression. Follow the links below to learn more!
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>Resources</ion-label>
+      </ion-list-header>
+      <ion-item href="https://en.wikipedia.org/wiki/Caffeine">
+        <ion-icon slot="start" color="medium" ios="ios-book" md="md-book"></ion-icon>
+        <ion-label>Wiki</ion-label>
+      </ion-item>
+      <ion-item href="https://www.caffeineinformer.com">
+        <ion-icon slot="start" color="medium" ios="ios-information-circle" md="md-information-circle"></ion-icon>
+        <ion-label>Caffeine Informer</ion-label>
+      </ion-item>
+      <ion-item href="https://medlineplus.gov/caffeine.html">
+        <ion-icon slot="start" color="medium" ios="ios-globe" md="md-globe"></ion-icon>
+        <ion-label>National Library of Medicine</ion-label>
+      </ion-item>
+      <ion-item href="https://www.webmd.com/vitamins/ai/ingredientmono-979/caffeine">
+        <ion-icon slot="start" color="medium" ios="ios-navigate" md="md-navigate"></ion-icon>
+        <ion-label>WebMD</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label></ion-label>
+      </ion-item>
+      <ion-item text-center>
+        <ion-label>
+        <ion-icon slot="start" background="none"  color="light" ios="ios-cafe" md="md-cafe"></ion-icon>
+      </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
