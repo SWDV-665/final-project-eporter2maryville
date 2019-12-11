@@ -1,4 +1,6 @@
 .welcome-card img {
+  height: auto;
   max-height: 35vh;
   overflow: hidden;
+  object-fit: cover;
 }
