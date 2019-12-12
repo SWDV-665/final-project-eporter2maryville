@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { from } from 'rxjs';
+/**import { Tab1Page } from '../tab1/tab1.page';*/
 
 @Component({
   selector: 'app-tab2',
@@ -8,5 +10,9 @@ import { Component } from '@angular/core';
 export class Tab2Page {
 
   constructor() {}
+
+  caffeineLog2 = []
+
+
 
 }

@@ -23,20 +23,20 @@
         <ion-label>Product Type</ion-label>
         <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet"
         >
-          <ion-select-option *ngFor="let item of caffeineLog" value="{{item.productType}}">Coffee</ion-select-option>
-          <ion-select-option *ngFor="let item of caffeineLog" value="{{item.productType}}">Energy Drink</ion-select-option>
-          <ion-select-option *ngFor="let item of caffeineLog" value="{{item.productType}}">Tea</ion-select-option>
-          <ion-select-option *ngFor="let item of caffeineLog" value="{{item.productType}}">Food</ion-select-option>
-          <ion-select-option *ngFor="let item of caffeineLog" value="{{item.productType}}">Medication</ion-select-option>
+          <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Coffee</ion-select-option>
+          <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Energy Drink</ion-select-option>
+          <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Tea</ion-select-option>
+          <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Food</ion-select-option>
+          <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Medication</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Product Name</ion-label>
-          <ion-input placeholder="Cold Brew" *ngFor="let item of caffeineLog" value="{{item.productName}}"></ion-input>
+          <ion-input placeholder="Cold Brew" *ngFor="let item of caffeineEntry" value="{{item.productName}}"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Caffeine Amount</ion-label>
-          <ion-input placeholder="85" *ngFor="let item of caffeineLog" value="{{item.caffeineAmount}}"></ion-input>
+          <ion-input placeholder="85" *ngFor="let item of caffeineEntry" value="{{item.caffeineAmount}}"></ion-input>
       </ion-item>
 
       <!-- <ion-item>
