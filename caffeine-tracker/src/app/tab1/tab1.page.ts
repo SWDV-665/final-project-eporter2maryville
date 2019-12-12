@@ -9,4 +9,16 @@ export class Tab1Page {
 
   constructor() {}
 
+  caffeineLog = [
+    {
+      productType: '',
+      productName: '',
+      caffeineAmount: '',
+    },
+  ];
+
+  addItem() {
+    console.log("Adding an item to list");
+  }
+
 }
