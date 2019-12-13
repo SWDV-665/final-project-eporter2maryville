@@ -7,47 +7,32 @@
 </ion-header>
 <ion-content>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        
-      </ion-card-title>
-    </ion-card-header>
-  </ion-card>
-
+<!--List of items that have been created - forming the user's log of caffeine-->
   <ion-list>
-    <ion-item-sliding>
-      <ion-item>
-        <p>test</p>
-      </ion-item>
-      <ion-item-options>
-        <button ion-button color="warning" icon-start>
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-      <!--
-            <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
-          <ion-item>
-            <h2>{{item.name}}</h2>
-            <p>{{item.quantity}}</p>
-          </ion-item>
-          <ion-item-options>
-            <button (click)="editItem(item, i)" ion-button color="warning" icon-start>
-              <ion-icon name="create"></ion-icon>
-              Edit
-            </button>
-            <button (click)="shareItem(item, i)" ion-button color="primary" icon-start>
-              <ion-icon name="share"></ion-icon>
-              Share
-            </button>
-            <button (click)="removeItem(item, i)" ion-button color="danger" icon-start>
-              <ion-icon name="trash"></ion-icon>
-              Done
-            </button>
-          </ion-item-options>
-        -->
-    </ion-item-sliding>
+
+      <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
+        <ion-item>
+            <div ng-repeat="data in carven">
+              
+          <h2>{{item.productType}}    |    {{item.productName}}    |    {{item.caffeineAmount}} mg</h2>
+          
+            </div>
+        </ion-item>
+        <ion-item-options>
+          <ion-button (click)="editItem(item, i)"  color="primary" icon-start>
+            <ion-icon name="create"></ion-icon>
+            Edit
+          </ion-button>
+          <ion-button (click)="shareItem(item, i)"  color="success" icon-start>
+            <ion-icon name="share"></ion-icon>
+            Share
+          </ion-button>
+          <ion-button (click)="removeItem(item, i)"  color='danger' icon-start>
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </ion-button>
+        </ion-item-options>
+      </ion-item-sliding>
   </ion-list>
 
 </ion-content>

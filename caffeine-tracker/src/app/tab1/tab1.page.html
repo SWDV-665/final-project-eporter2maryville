@@ -17,9 +17,9 @@
     </ion-card-content>
   </ion-card>
   
-  <form onsubmit="processForm(event)">
   <ion-list>
-      <ion-item>
+      <!-- Future work to move the input from a modal to the screen if I have time
+        <ion-item>
         <ion-label>Product Type</ion-label>
         <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet"
         >
@@ -37,28 +37,8 @@
       <ion-item>
         <ion-label>Caffeine Amount</ion-label>
           <ion-input placeholder="85" *ngFor="let item of caffeineEntry" value="{{item.caffeineAmount}}"></ion-input>
-      </ion-item>
-
-      <!-- <ion-item>
-          <ion-label>Action Sheet</ion-label>
-          <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="productType"
-          formControlName="productType">
-            <ion-select-option value="red">Coffee</ion-select-option>
-            <ion-select-option value="purple">Energy Drink</ion-select-option>
-            <ion-select-option value="yellow">Tea</ion-select-option>
-            <ion-select-option value="orange">Food</ion-select-option>
-            <ion-select-option value="green">Medication</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item>
-            <ion-input placeholder="productName" formControlName="productName"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input placeholder="caffeineAmount" formControlName="caffeineAmount"></ion-input>
-        </ion-item>-->
+      </ion-item>   -->
       
           <ion-button (click)="addItem()" expand="full" >Add Caffeine</ion-button>
     </ion-list>
-
-  </form>
 </ion-content>
