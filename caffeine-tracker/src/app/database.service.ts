@@ -59,7 +59,7 @@ export class DatabaseService {
   }
  
   loadcaffeine_log() {
-    return this.database.executeSql('Select * from caffeine_log', [].then(data => {
+    return this.database.executeSql('Select * from caffeine_log', []).then(data => {
       let caffeine_logs: Dev[] = []; 
 
       if (data.rows.length > 0) {
@@ -68,7 +68,6 @@ export class DatabaseService {
           if (data.rows.item(i).skills != '') {
             skills = JSON.parse(data.rows.item(i).skills);
           }
- 
           caffeine_logs.push({ 
             post_id: data.rows.item(i).id,
             productType: data.rows.item(i).productType, 
@@ -79,7 +78,7 @@ export class DatabaseService {
         }
       }
       this.caffeine_log.next(caffeine_logs);
-    }))
+    });
   }
   addCaffeineLog(productType, productName, caffeineAmount, date) {
     let data = [productType, productName, caffeineAmount, date];
