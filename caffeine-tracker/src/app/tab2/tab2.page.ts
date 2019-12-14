@@ -22,6 +22,8 @@ export class Tab2Page implements OnInit {
 
     caffeineEntry: Dev[] = [];
 
+    caffeine = {}
+
     ngOnInit(){
       this.db.getDatabaseState().subscribe(ready => {
         if (ready){}
@@ -30,6 +32,14 @@ export class Tab2Page implements OnInit {
         });
       });
     }
+    addCaffeineLog() {
+      this.db.addCaffeineLog(this.caffeine['productType'], this.caffeine['productName'], 
+      this.caffeine['caffeineAmount'], this.caffeine['date'])
+      .then(_ => {
+        this.caffeine = {};
+      });
+    }
+  
 
   loadItems() {
     return this.logService.getItems();
