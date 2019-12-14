@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS caffeine_log (
+post_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+productType text,
+productName text,
+caffeineAmount integer,
+date integer);
+
+INSERT or IGNORE INTO caffeine_log (
+productType, productName, caffeineAmount, date)
+VALUES ('Coffee', 'Pour Over', '00', '2019-12-14');
+

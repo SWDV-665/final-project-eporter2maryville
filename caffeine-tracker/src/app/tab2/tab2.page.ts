@@ -1,21 +1,35 @@
-import { Component } from '@angular/core';
-import { from } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Tab1Page } from '../tab1/tab1.page';
 import { CaffeineLogChangeService } from '../caffeine-log-change.service';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { InputPromptService } from '../input-prompt.service'
+import { InputPromptService } from '../input-prompt.service';
+import { DatabaseService, Dev } from '../database.service';
+
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
 
   constructor(public logService: CaffeineLogChangeService, private SocialSharing: SocialSharing, 
-    public toastCtrl: ToastController, public alertCtrl: AlertController, public promptService: InputPromptService) {}
+    public toastCtrl: ToastController, public alertCtrl: AlertController, public promptService: InputPromptService,
+    private db:DatabaseService, ) {}
+
+    caffeineEntry: Dev[] = [];
+
+    ngOnInit(){
+      this.db.getDatabaseState().subscribe(ready => {
+        if (ready){}
+        this.db.getCaffeine_log().subscribe(devs => {
+          this.caffeineEntry = devs;
+        });
+      });
+    }
 
   loadItems() {
     return this.logService.getItems();

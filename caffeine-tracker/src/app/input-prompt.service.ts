@@ -17,22 +17,28 @@ export class InputPromptService {
   async showPrompt(item?, index?) {
     const prompt = this.alertCtrl.create({
       header: item ? "Edit Item" : "Add Item",
-      message: item ? "Please update the product type, name, or mg of caffeine you consumed:" : "Please enter the product type, name, and mg of caffeine you consumed:",
+      message: item ? "Please update the product type, name, mg of caffeine, or date:" : "Please enter the product type, name, mg of caffeine you consumed, and date:",
       inputs: [
         {
           name: 'productType',
-          placeholder: 'Coffee',
+          placeholder: ' Product Type: Coffee',
           value: item ? item.productType : null
         },
         {
           name: 'productName',
-          placeholder: 'Flat White',
+          placeholder: 'Product Name: Flat White',
           value: item ? item.productName : null
         },
         {
           name: 'caffeineAmount',
-          placeholder: '85',
+          placeholder: 'Caffeine Amount in mg: 85',
           value: item ? item.caffeineAmount : null
+        },
+        {
+          name: 'date',
+          type: 'date',
+          placeholder: 'Date: YYYY-MM-DD',
+          value: item ? item.date : null
         },
       ],
       buttons: [
