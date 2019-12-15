@@ -5,7 +5,7 @@ productName text,
 caffeineAmount integer,
 date integer);
 
-INSERT or IGNORE INTO caffeine_log (
+INSERT INTO caffeine_log (
 productType, productName, caffeineAmount, date)
 VALUES ('Coffee', 'Pour Over', '00', '2019-12-14');
 

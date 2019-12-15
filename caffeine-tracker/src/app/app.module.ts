@@ -15,6 +15,9 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 
 import { HttpClientModule } from '@angular/common/http';
+import { DatabaseService } from './database.service';
+import { CaffeineLogChangeService } from './caffeine-log-change.service';
+import { InputPromptService } from './input-prompt.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +29,10 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SQLite,
-    SQLitePorter
+    SQLitePorter,
+    DatabaseService,
+    CaffeineLogChangeService,
+    InputPromptService
   ],
   bootstrap: [AppComponent]
 })

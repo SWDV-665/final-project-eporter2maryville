@@ -18,17 +18,32 @@
   </ion-card>
   
   <ion-list>
-      <!-- Future work to move the input from a modal to the screen if I have time
+      <!-- Future work to move the input from a modal to the screen if I have time 
         <ion-item>
-        <ion-label>Product Type</ion-label>
-        <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet"
+        <ion-label position="stacked">Product Type</ion-label>
+          <ion-input [(ngModel)]="caffeine.productType" placeholder="Coffee"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Product Name</ion-label>
+          <ion-input [(ngModel)]="caffeineLog.productName" placeholder="Latte"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Caffeine Amount in MG</ion-label>
+          <ion-input [(ngModel)]="caffeine_log.caffeineAmount" placeholder="85"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Date</ion-label>
+          <ion-input [(ngModel)]="caffeine.date" placeholder="YYYY-MM-DD"></ion-input>
+        </ion-item> -->
+        <!--Action Sheet implementation
+          <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet"
         >
           <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Coffee</ion-select-option>
           <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Energy Drink</ion-select-option>
           <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Tea</ion-select-option>
           <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Food</ion-select-option>
           <ion-select-option *ngFor="let item of caffeineEntry" value="{{item.productType}}">Medication</ion-select-option>
-        </ion-select>
+        </ion-select> 
       </ion-item>
       <ion-item>
         <ion-label>Product Name</ion-label>
@@ -37,8 +52,8 @@
       <ion-item>
         <ion-label>Caffeine Amount</ion-label>
           <ion-input placeholder="85" *ngFor="let item of caffeineEntry" value="{{item.caffeineAmount}}"></ion-input>
-      </ion-item>   -->
-      
+      </ion-item>
+    -->
           <ion-button (click)="addItem()" expand="full" >Add Caffeine</ion-button>
     </ion-list>
 </ion-content>

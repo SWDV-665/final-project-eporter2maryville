@@ -16,19 +16,23 @@ import { DatabaseService, Dev } from '../database.service';
 })
 export class Tab2Page implements OnInit {
 
-  constructor(public logService: CaffeineLogChangeService, private SocialSharing: SocialSharing, 
-    public toastCtrl: ToastController, public alertCtrl: AlertController, public promptService: InputPromptService,
+  caffeineLog: Dev[] = [];
+
+  caffeine = {};
+
+  constructor(public logService: CaffeineLogChangeService, 
+    private SocialSharing: SocialSharing, 
+    public toastCtrl: ToastController, 
+    public alertCtrl: AlertController, 
+    public promptService: InputPromptService,
     private db:DatabaseService, ) {}
-
-    caffeineEntry: Dev[] = [];
-
-    caffeine = {}
 
     ngOnInit(){
       this.db.getDatabaseState().subscribe(ready => {
         if (ready){}
         this.db.getCaffeine_log().subscribe(devs => {
-          this.caffeineEntry = devs;
+          console.log('Getting Caffeine Log');
+          this.caffeineLog = devs;
         });
       });
     }
@@ -39,7 +43,9 @@ export class Tab2Page implements OnInit {
         this.caffeine = {};
       });
     }
-  
+  getCaffeineLogAll(){
+    this.db.loadcaffeine_log
+  }
 
   loadItems() {
     return this.logService.getItems();

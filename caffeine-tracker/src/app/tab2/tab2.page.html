@@ -9,7 +9,7 @@
 
 <!--List of items that have been created - forming the user's log of caffeine-->
   <ion-list>
-
+<!-- backup attempt
       <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
         <ion-item>
             <div ng-repeat="data in carven">
@@ -19,6 +19,12 @@
           
             </div>
         </ion-item>
+      -->
+      <ion-item-sliding *ngFor="let dev of caffeineLog" [routerLink]="['/', 'caffeineLog', dev.post_id]">
+        <ion-label>
+          <h2>{{ dev.productName }}</h2>
+          <p>{{ dev.caffeineAmount }}</p>
+        </ion-label>
         <ion-item-options>
           <ion-button (click)="editItem(item, i)"  color="primary" icon-start>
             <ion-icon name="create"></ion-icon>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { CaffeineLogChangeService } from './caffeine-log-change.service';
+import { DatabaseService, Dev } from './database.service';
 
 /** Service for modal inputs info. To be replaced with on screen options for add at a later date 
  * (see Tab1 commented out code) */
@@ -10,7 +11,9 @@ import { CaffeineLogChangeService } from './caffeine-log-change.service';
 })
 export class InputPromptService {
 
-  constructor(public logService: CaffeineLogChangeService, public alertCtrl:AlertController) {
+  constructor(public logService: CaffeineLogChangeService, 
+    private db:DatabaseService, 
+    public alertCtrl:AlertController) {
     console.log('Hello InputDialogServiceProvider Provider')
    }
 
@@ -57,6 +60,53 @@ export class InputPromptService {
             }
             else {
               this.logService.addItem(item);
+            }
+          }
+        }
+      ]
+    });
+    (await prompt).present();
+  }
+  async sqlAddPrompt(productType, productName, caffeineAmount, date) {
+    const prompt = this.alertCtrl.create({
+      header: "Add Item",
+      message: "Please enter the product type, name, mg of caffeine, and date:",
+      inputs: [
+        {
+          name: 'productType',
+          placeholder: ' Product Type: Coffee',
+          value: null
+        },
+        {
+          name: 'productName',
+          placeholder: 'Product Name: Flat White',
+          value: null
+        },
+        {
+          name: 'caffeineAmount',
+          placeholder: 'Caffeine Amount in mg: 85',
+          value: null
+        },
+        {
+          name: 'date',
+          type: 'date',
+          placeholder: 'Date: YYYY-MM-DD',
+          value: null
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log("Cancel Clicked");
+          }
+        },
+        {
+          text: 'Save',
+          handler: item => {
+            console.log('Save Clicked', item);
+            {
+              this.db.addCaffeineLog(productType, productName, caffeineAmount, date);
             }
           }
         }
