@@ -6,7 +6,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { InputPromptService } from '../input-prompt.service';
-import { DatabaseService, Dev } from '../database.service';
+import { DatabaseService, Caf } from '../database.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { DatabaseService, Dev } from '../database.service';
 })
 export class Tab2Page implements OnInit {
 
-  caffeineLog: Dev[] = [];
+  caffeineLog: Caf[] = [];
 
   caffeine = {};
 
@@ -28,11 +28,12 @@ export class Tab2Page implements OnInit {
     private db:DatabaseService, ) {}
 
     ngOnInit(){
-      this.db.getDatabaseState().subscribe(ready => {
-        if (ready){}
-        this.db.getCaffeine_log().subscribe(devs => {
-          console.log('Getting Caffeine Log');
+      this.db.getDatabaseState().subscribe(rdy => {
+        if (rdy){}
+        console.log('database ready');
+        this.db.getCafs().subscribe(devs => {
           this.caffeineLog = devs;
+          console.log('Getting Caffeine Log', devs);
         });
       });
     }

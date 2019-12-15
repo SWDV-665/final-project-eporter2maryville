@@ -8,8 +8,18 @@
 <ion-content>
 
 <!--List of items that have been created - forming the user's log of caffeine-->
-  <ion-list>
-<!-- backup attempt
+  
+<!-- failed SQLite attempt attempt
+  <ion-item *ngFor="let cafs of caffeineLog">
+        <ion-label>
+          <h2>{{ cafs.post_id }}</h2>
+          <h2>{{ cafs.productName }}</h2> 
+          <h2>{{ cafs.productType}}</h2>
+          <p>{{ cafs.caffeineAmount }}</p>
+          <p>{{ cafs.date }}</p>
+        </ion-label>
+        -->
+        <ion-list>
       <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
         <ion-item>
             <div ng-repeat="data in carven">
@@ -19,12 +29,6 @@
           
             </div>
         </ion-item>
-      -->
-      <ion-item-sliding *ngFor="let dev of caffeineLog" [routerLink]="['/', 'caffeineLog', dev.post_id]">
-        <ion-label>
-          <h2>{{ dev.productName }}</h2>
-          <p>{{ dev.caffeineAmount }}</p>
-        </ion-label>
         <ion-item-options>
           <ion-button (click)="editItem(item, i)"  color="primary" icon-start>
             <ion-icon name="create"></ion-icon>

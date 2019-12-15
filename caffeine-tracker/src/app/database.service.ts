@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { BehaviorSubject, Observable } from 'rxjs';
  
-export interface Dev {
+export interface Caf {
   post_id: number,
   productType: string,
   productName: string,
@@ -37,6 +37,7 @@ export class DatabaseService {
       .then((db: SQLiteObject) => {
           this.database = db;
           this.seedDatabase();
+          console.log('database seeded');
       });
       
     });
@@ -58,14 +59,13 @@ export class DatabaseService {
     return this.dbReady.asObservable();
   }
  
-  getCaffeine_log(): Observable<Dev[]> {
+  getCafs(): Observable<Caf[]> {
     return this.caffeine_log.asObservable();
   }
 
   loadcaffeine_log() {
-    return this.database.executeSql('Select * from caffeine_log', [
-    ]).then(data => {
-      let caffeine_logs: Dev[] = []; 
+    return this.database.executeSql('Select * from caffeine_log', []).then(data => {
+      let caffeine_logs: Caf[] = []; 
 
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
@@ -90,7 +90,7 @@ export class DatabaseService {
     });
   }
  
-  getCaffeinelog(post_id): Promise<Dev> {
+  getCaffeinelog(post_id): Promise<Caf> {
     return this.database.executeSql('SELECT * FROM caffeine_log WHERE post_id = ?', [post_id]).then(data => {
       return {
         post_id: data.rows.item(0).post_id,
@@ -107,7 +107,7 @@ export class DatabaseService {
       this.loadcaffeine_log();
     });
   }
-  updateDeveloper(dev: Dev) {
+  updateDeveloper(dev: Caf) {
     let data = [dev.productType, dev.productName, dev.caffeineAmount, dev.date];
     return this.database.executeSql(
       `UPDATE caffeine_log SET productType = ?, productName = ?, caffeineAmount, date = ? WHERE post_id = ${dev.post_id}`, data).then(data => {

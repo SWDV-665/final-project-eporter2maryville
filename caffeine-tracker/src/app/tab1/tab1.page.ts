@@ -1,8 +1,8 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { InputPromptService } from '../input-prompt.service';
-import { DatabaseService, Dev } from '../database.service';
+import { DatabaseService, Caf } from '../database.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,9 +10,9 @@ import { DatabaseService, Dev } from '../database.service';
   styleUrls: ['tab1.page.scss']
 })
 @Injectable()
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
-  caffeineLog: Dev[] = [];
+  caffeineLog: Caf[] = [];
 
   caffeine = {};
 
@@ -22,19 +22,27 @@ export class Tab1Page {
     private db:DatabaseService,
     ) {}
 
-    addItem(productType,productName,caffeineAmount,date) {
-      console.log("Adding an item to list");
-      this.promptService.sqlAddPrompt(productType, productName,caffeineAmount,date);
-    }
+   
     ngOnInit(){
       this.db.getDatabaseState().subscribe(ready => {
         if (ready){}
-        this.db.getCaffeine_log().subscribe(devs => {
+        this.db.getCafs().subscribe(cafs => {
           console.log('Getting Caffeine Log');
-          this.caffeineLog = devs;
+          this.caffeineLog = cafs;
         });
       });
     }
+
+    addItemSQL(productType,productName,caffeineAmount,date) {
+      console.log("Adding an item to list and SQLite db");
+      this.promptService.sqlAddPrompt(productType, productName,caffeineAmount,date);
+    }
+
+    addItem(item) {
+      console.log("Adding an item to list and SQLite db");
+      this.promptService.showPrompt(item);
+    }
+
     addCaffeineLog() {
       this.db.addCaffeineLog(this.caffeine['productType'], this.caffeine['productName'], 
       this.caffeine['caffeineAmount'], this.caffeine['date'])

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { CaffeineLogChangeService } from './caffeine-log-change.service';
-import { DatabaseService, Dev } from './database.service';
+import { DatabaseService, Caf } from './database.service';
 
 /** Service for modal inputs info. To be replaced with on screen options for add at a later date 
  * (see Tab1 commented out code) */
