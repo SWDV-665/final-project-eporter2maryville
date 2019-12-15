@@ -1,9 +1,7 @@
-import { Component, Injectable, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { ToastController } from '@ionic/angular';
+import { Component, Injectable } from '@angular/core';
+import { AlertController } from '@ionic/angular'
+import { ToastController } from '@ionic/angular'
 import { InputPromptService } from '../input-prompt.service'
-import { DatabaseService, Dev } from '../database.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tab1',
@@ -14,21 +12,10 @@ import { Observable } from 'rxjs';
 export class Tab1Page {
 
   constructor( public toastCtrl: ToastController, public alertCtrl: AlertController, 
-    public promptService: InputPromptService, private db:DatabaseService) {}
+    public promptService: InputPromptService) {}
 
-    caffeineEntry: Dev[] = [];
-
-    ngOnInit(){
-      this.db.getDatabaseState().subscribe(ready => {
-        if (ready){}
-        this.db.getCaffeine_log().subscribe(devs => {
-          this.caffeineEntry = devs;
-        });
-      });
-    }
-
-    addItem(productName,productType,caffeineAmount,date) {
+    addItem() {
       console.log("Adding an item to list");
-      this.promptService.showPromptAdd(productName,productType,caffeineAmount,date);
+      this.promptService.showPrompt();
     }
   }

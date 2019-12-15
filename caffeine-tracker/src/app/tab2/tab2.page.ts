@@ -18,11 +18,9 @@ export class Tab2Page implements OnInit {
 
   constructor(public logService: CaffeineLogChangeService, private SocialSharing: SocialSharing, 
     public toastCtrl: ToastController, public alertCtrl: AlertController, public promptService: InputPromptService,
-    private db:DatabaseService) {}
+    private db:DatabaseService, ) {}
 
     caffeineEntry: Dev[] = [];
-
-    caffeineEntry2: Observable<any>;
 
     caffeine = {}
 
@@ -44,7 +42,7 @@ export class Tab2Page implements OnInit {
   
 
   loadItems() {
-    return this.db.loadcaffeine_log();
+    return this.logService.getItems();
   }
 
   async removeItem(item, index) {
@@ -85,13 +83,13 @@ export class Tab2Page implements OnInit {
       duration: 3000
     });
     (await toast).present(),
-      this.promptService.showPromptEdit(item, index);
+      this.promptService.showPrompt(item, index);
 
   }
 
-  addItem(productType,productName,caffeineAmount,date) {
+  addItem() {
     console.log("Adding an item to list");
-    this.promptService.showPromptAdd(productType,productName,caffeineAmount,date);
+    this.promptService.showPrompt();
   }
 
 }
