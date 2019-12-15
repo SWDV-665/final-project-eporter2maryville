@@ -5,9 +5,23 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<!--
 <ion-content>
+-->
+    <ion-content padding>
+     
+     
+          <ion-list>
+            <ion-item button *ngFor="let dev of caffeineEntry" [routerLink]="['/', '', dev.post_id]">
+              <ion-label>
+                <h2>{{ dev.productName }}</h2>
+                <p>{{ dev.caffeineAmount }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
 
 <!--List of items that have been created - forming the user's log of caffeine-->
+<!--
   <ion-list>
 
       <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
@@ -35,5 +49,5 @@
         </ion-item-options>
       </ion-item-sliding>
   </ion-list>
-
+-->
 </ion-content>
